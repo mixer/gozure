@@ -41,6 +41,7 @@ type (
 	NotificationFormat string
 
 	NotificationHub struct {
+		HubPath                 string
 		sasKeyValue             string
 		sasKeyName              string
 		host                    string
@@ -120,6 +121,7 @@ func NewNotificationHub(connectionString, hubPath string) *NotificationHub {
 	connData := strings.Split(connectionString, ";")
 
 	hub := &NotificationHub{}
+	hub.HubPath = hubPath
 	var endpoint string
 
 	for _, connItem := range connData {
